@@ -79,6 +79,13 @@ web_modules/
 # Next.js build output
 .next
 out
+# Aditional Ignores
+temp/
+tmp/*
+!tmp/.gitkeep
+!tmp/uploads
+tmp/uploads/*
+!tmp/uploads/.gitkeep
 
 # Nuxt.js build / generate output
 .nuxt
