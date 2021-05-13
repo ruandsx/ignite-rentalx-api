@@ -4,6 +4,8 @@ import { serve, setup } from "swagger-ui-express";
 import { router } from "./routes";
 import swaggerOptions from "./swagger.json";
 
+import "./database";
+
 const app = express();
 app.use(express.json());
 app.use("/docs", serve, setup(swaggerOptions));
