@@ -3,6 +3,7 @@ import { sign } from "jsonwebtoken";
 import { inject, injectable } from "tsyringe";
 
 import { authConfig } from "../../../../config/auth";
+import { AppError } from "../../../../errors/AppError";
 import { IAuthenticateUserDTO } from "../../dtos/IAuthenticateUserDTO";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 
@@ -25,23 +26,19 @@ class AuthenticateUserUseCase {
   async execute({ email, password }: IAuthenticateUserDTO): Promise<IResponse> {
     const user = await this.usersRepository.findByEmail(email);
     if (!user) {
-      throw new Error("Incorrect email/password combination");
+      throw new AppError("Incorrect email/password combination", 401);
     }
 
     const passwordMatch = await compare(password, user.password);
 
     if (!passwordMatch) {
-      throw new Error("Incorrect email/password combination");
+      throw new AppError("Incorrect email/password combination", 401);
     }
 
-    const token = sign(
-      { isAdmin: user.is_admin, email: user.email },
-      authConfig.jwt.secret,
-      {
-        subject: user.id,
-        expiresIn: authConfig.jwt.expiresIn,
-      }
-    );
+    const token = sign({}, authConfig.jwt.secret, {
+      subject: user.id,
+      expiresIn: authConfig.jwt.expiresIn,
+    });
 
     const response = {
       user: {
@@ -51,8 +48,6 @@ class AuthenticateUserUseCase {
       },
       token,
     };
-
-    console.log(authConfig);
 
     return response;
   }
