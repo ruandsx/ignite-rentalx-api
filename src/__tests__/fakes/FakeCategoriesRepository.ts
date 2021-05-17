@@ -1,6 +1,6 @@
-import { ICreateCategoryDTO } from "../../modules/cars/dtos/ICreateCategoryDTO";
-import { Category } from "../../modules/cars/entities/Category";
-import { ICategoriesRepository } from "../../modules/cars/repositories/ICategoriesRepository";
+import { ICreateCategoryDTO } from "@modules/cars/dtos/ICreateCategoryDTO";
+import { Category } from "@modules/cars/entities/Category";
+import { ICategoriesRepository } from "@modules/cars/repositories/ICategoriesRepository";
 
 class FakeCategoriesRepository implements ICategoriesRepository {
   categories: Category[] = [];

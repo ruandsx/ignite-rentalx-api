@@ -2,7 +2,7 @@ import csvParse from "csv-parse";
 import { createReadStream, unlinkSync } from "fs";
 import { inject, injectable } from "tsyringe";
 
-import { ICategoriesRepository } from "../../repositories/ICategoriesRepository";
+import { ICategoriesRepository } from "@modules/cars/repositories/ICategoriesRepository";
 
 interface ILoadedCategory {
   name: string;
