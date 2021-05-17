@@ -1,7 +1,7 @@
-import { AppError } from "../../errors/AppError";
-import { AuthenticateUserUseCase } from "../../modules/accounts/usecases/authenticateUser/AuthenticateUserUseCase";
-import { CreateUserUseCase } from "../../modules/accounts/usecases/createUser/CreateUserUseCase"; //
-import { FakeUsersRepository } from "../fakes/FakeUsersRepository";
+import { AppError } from "@errors/AppError";
+import { AuthenticateUserUseCase } from "@modules/accounts/usecases/authenticateUser/AuthenticateUserUseCase";
+import { CreateUserUseCase } from "@modules/accounts/usecases/createUser/CreateUserUseCase";
+import { FakeUsersRepository } from "@tests/fakes/FakeUsersRepository";
 
 let usersRepository: FakeUsersRepository;
 let authenticateUserUseCase: AuthenticateUserUseCase;
